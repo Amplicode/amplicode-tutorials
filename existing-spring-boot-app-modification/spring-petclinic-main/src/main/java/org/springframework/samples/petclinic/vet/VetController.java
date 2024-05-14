@@ -37,8 +37,12 @@ class VetController {
 
 	private final VetRepository vetRepository;
 
-	public VetController(VetRepository clinicService) {
+	private final VetMapper vetMapper;
+
+	public VetController(VetRepository clinicService,
+						 VetMapper vetMapper) {
 		this.vetRepository = clinicService;
+		this.vetMapper = vetMapper;
 	}
 
 	@GetMapping("/vets.html")
@@ -69,7 +73,10 @@ class VetController {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet
 		// objects so it is simpler for JSon/Object mapping
 		Vets vets = new Vets();
-		vets.getVetList().addAll(this.vetRepository.findAll());
+		vets.getVetList().addAll(this.vetRepository.findAll()
+			.stream()
+			.map(vetMapper::toDto)
+			.toList());
 		return vets;
 	}
 

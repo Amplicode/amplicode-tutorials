@@ -30,10 +30,10 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Vets {
 
-	private List<Vet> vets;
+	private List<VetWithoutSalaryDto> vets;
 
 	@XmlElement
-	public List<Vet> getVetList() {
+	public List<VetWithoutSalaryDto> getVetList() {
 		if (vets == null) {
 			vets = new ArrayList<>();
 		}
