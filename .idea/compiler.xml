@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="spring-petclinic" target="17" />
+      <module name="spring-petclinic.aot" target="17" />
+      <module name="spring-petclinic.aotTest" target="17" />
+      <module name="spring-petclinic.main" target="17" />
+      <module name="spring-petclinic.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
