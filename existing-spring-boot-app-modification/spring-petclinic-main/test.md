@@ -1,4 +1,10 @@
+#### Обновление зарплат для старых сотрудников
+
+```bash
+psql postgresql://root:root@localhost:5432/spring-petclinic
 UPDATE vets SET salary = floor(random() * (10000-5000+1) + 5000)::int;
+\q
+```
 
 #### Получение списка ветеренаров
 
