@@ -13,6 +13,7 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.samples.petclinic.owner.VisitDto;
 
@@ -62,4 +63,21 @@ public class KafkaConfiguration {
 	KafkaTemplate<String, VisitDto> visitDtoKafkaTemplate(DefaultKafkaProducerFactory<String, VisitDto> visitDtoProducerFactory) {
 		return new KafkaTemplate<>(visitDtoProducerFactory);
 	}
+
+    @Bean
+    public ConsumerFactory<String, VisitDto> visitDtoConsumerFactory(KafkaProperties kafkaProperties) {
+        Map<String, Object> props = kafkaProperties.buildConsumerProperties();
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, "org.springframework.samples.petclinic.owner");
+        return new DefaultKafkaConsumerFactory<>(props);
+    }
+
+    @Bean
+    public KafkaListenerContainerFactory<?> visitDtoListenerFactory(ConsumerFactory<String, VisitDto> visitDtoConsumerFactory) {
+        ConcurrentKafkaListenerContainerFactory<String, VisitDto> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(visitDtoConsumerFactory);
+        factory.setBatchListener(false);
+        return factory;
+    }
 }
