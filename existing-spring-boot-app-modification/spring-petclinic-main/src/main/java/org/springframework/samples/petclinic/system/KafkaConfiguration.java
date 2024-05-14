@@ -13,6 +13,8 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.serializer.JsonSerializer;
+import org.springframework.samples.petclinic.owner.VisitDto;
 
 import java.util.Map;
 
@@ -46,5 +48,18 @@ public class KafkaConfiguration {
 		factory.setConsumerFactory(stringConsumerFactory);
 		factory.setBatchListener(false);
 		return factory;
+	}
+
+	@Bean
+	DefaultKafkaProducerFactory<String, VisitDto> visitDtoProducerFactory(KafkaProperties properties) {
+		Map<String, Object> producerProperties = properties.buildProducerProperties();
+		producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		return new DefaultKafkaProducerFactory<>(producerProperties);
+	}
+
+	@Bean
+	KafkaTemplate<String, VisitDto> visitDtoKafkaTemplate(DefaultKafkaProducerFactory<String, VisitDto> visitDtoProducerFactory) {
+		return new KafkaTemplate<>(visitDtoProducerFactory);
 	}
 }
