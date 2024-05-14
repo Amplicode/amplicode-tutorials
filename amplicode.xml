@@ -18,7 +18,7 @@
   </component>
   <component name="AmplicodePersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit moduleName="org.springframework.samples.spring-petclinic.main" name="Default">
         <packages>
           <package value="org.springframework.samples.petclinic" />
         </packages>
