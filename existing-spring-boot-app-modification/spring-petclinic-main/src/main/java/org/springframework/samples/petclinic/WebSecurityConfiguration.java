@@ -23,6 +23,8 @@ public class WebSecurityConfiguration {
 		http.authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
 			.requestMatchers(HttpMethod.GET, "/vets")
 			.permitAll()
+			.requestMatchers("/rest/vets/**")
+			.permitAll()
 			.anyRequest()
 			.authenticated());
 		http.headers(Customizer.withDefaults());
