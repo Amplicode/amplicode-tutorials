@@ -10,7 +10,7 @@
 
 ## Создаём Spring Data JPA (Hibernate) сущности из БД (PostgreSQL, MySQL, Oracle)
 
-* Видео: https://youtu.be/uxdec6WIWEg
+* Видео: http://www.youtube.com/watch?v=uxdec6WIWEg
 * Проект: [blog](generate-entities-from-db/blog)
 * Инструкция для самостоятельного прохождения: [README.md](generate-entities-from-db/README.md)
 
