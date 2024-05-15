@@ -19,3 +19,9 @@
 * Видео: http://www.youtube.com/watch?v=blAaNt_XHAs
 * Проект: [blog](liquibase-and-spring-boot/blog)
 * Инструкция для самостоятельного прохождения: [README.md](liquibase-and-spring-boot/README.md)
+
+## Flyway + Spring Boot | Настройка и написание миграций баз данных
+
+* Видео: http://www.youtube.com/watch?v=w-46xlGRcZk
+* Проект: [blog](flyway-and-spring-boot/blog)
+* Инструкция для самостоятельного прохождения: [README.md](flyway-and-spring-boot/README.md)
