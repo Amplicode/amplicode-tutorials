@@ -75,3 +75,20 @@ ALTER TABLE comments_posts
 
 \q
 ```
+
+## Создание DB-view
+
+```bash
+psql postgresql://root:root@localhost:5432/blog
+
+CREATE VIEW USER_STATISTICS (USER_ID, NUMBER_OF_POSTS) AS
+SELECT
+	U.ID AS USER_ID,
+	COUNT(P.ID) AS NUMBER_OF_POSTS
+FROM
+	USERS U
+	JOIN POSTS P ON U.ID = P.AUTHOR_ID
+GROUP BY
+	U.ID;
+\q
+```
