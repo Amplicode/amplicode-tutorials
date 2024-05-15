@@ -45,5 +45,8 @@
                                  constraintName="fk_poscom_on_post" referencedColumnNames="id"
                                  referencedTableName="posts"/>
     </changeSet>
+    <changeSet id="1715756242798-1" author="georgii (generated)">
+        <addNotNullConstraint columnDataType="VARCHAR(255)" columnName="text" tableName="comments" validate="true"/>
+    </changeSet>
 
 </databaseChangeLog>

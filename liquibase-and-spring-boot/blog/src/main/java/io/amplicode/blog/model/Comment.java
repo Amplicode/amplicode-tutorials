@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "comments")
 public class Comment extends BaseEntity {
-    @Column(name = "text")
+    @Column(name = "text", nullable = false)
     private String text;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
