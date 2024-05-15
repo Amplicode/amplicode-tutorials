@@ -18,22 +18,11 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "author")
     private Set<Post> posts = new LinkedHashSet<>();
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
-
-    @Column(name = "fax")
-    private String fax;
 
     @Column(name = "last_activity")
     private Instant lastActivity;
-
-    public String getFax() {
-        return fax;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
 
     public Instant getLastActivity() {
         return lastActivity;
