@@ -1,7 +1,14 @@
+buildscript {
+	dependencies {
+		classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.5'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.flywaydb.flyway' version '10.10.0'
 }
 
 group = 'io.amplicode'
@@ -25,4 +32,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+flyway {
+	baselineVersion = 0
+	url = 'jdbc:postgresql://localhost:5432/blog'
+	user = 'root'
+	password = 'root'
 }
