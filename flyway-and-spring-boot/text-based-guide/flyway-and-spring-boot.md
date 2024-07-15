@@ -64,6 +64,31 @@
 * Оставьте значения всех остальных параметров по умолчанию
 * Нажмите **OK**.
 
+Amplicode добавит в файл docker-compose.yaml код для pgAdmin сервиса:
+
+```yaml
+pgadmin:
+image: dpage/pgadmin4:8.9
+restart: "no"
+ports:
+- "5050:80"
+volumes:
+- pgadmin_data:/var/lib/pgadmin
+- ./docker/pgadmin/servers.json:/pgadmin4/servers.json
+- ./docker/pgadmin/pgpass:/pgadmin4/pgpass
+environment:
+PGADMIN_DEFAULT_EMAIL: admin@admin.com
+PGADMIN_DEFAULT_PASSWORD: root
+PGADMIN_CONFIG_SERVER_MODE: "False"
+PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+healthcheck:
+test: wget --no-verbose --tries=1 --spider http://localhost:80/misc/ping || exit -1
+interval: 10s
+timeout: 5s
+start_period: 10s
+retries: 5
+entrypoint: /bin/sh -c "chmod 600 /pgadmin4/pgpass; /entrypoint.sh;"`
+```
 Теперь необходимо запустить все сервисы, чтобы посмотреть на актуальное состояние БД. Для этого необходимо нажать на иконку двойной стрелочки напротив слова `services` в файле `docker-compose.yaml`
 
 ![](images/run-all-services.png)
@@ -99,7 +124,7 @@ Amplicode Explorer позволяет добавить необходимые с
 
   Благодаря выбору первого чекбокса произойдет автоматическое перенаправление к окну генерации скрипта базы данных. Благодаря выбору второго чекбокса Amplicode добавит свойство в файл `application.properties`, позволяющее запускать приложение и выполнять скрипт инициализации только в том случае, если база данных будет пустой. В остальных случаях скрипт инициализации будет отмечен как выполненный, но фактически выполняться не будет.
 * В качестве источника данных для генерации скрипта инициализации выберем базу данных. Для анализа ее структуры Amplicode потребуется подключение к базе данных.
-
+  ![](images/db-migration-settings-source-type.png)
 * Выбрать опцию создания нового подключения.
   (Здесь необходимо отметить, что Amplicode позволяет создать подключение к базе данных с нуля, либо отталкиваясь от информации, указанной для источника данных в приложении. Здесь следует выбрать второй вариант, так как источник данных в приложении уже настроен.)
   ![](images/create-new-from-data-source.png)
@@ -125,29 +150,37 @@ Amplicode Explorer позволяет добавить необходимые с
 Для этого необходимо:
 * Добавить плагин в файл `build.gradle`
 
-`plugins {
+``` yaml
+plugins {
 id "org.flywaydb.flyway" version "10.15.2"
-}`
+}
+```
 
 * Добавить зависимость для работы с PostgreSQL
 
-`dependencies {
+``` yaml
+dependencies {
 runtimeOnly 'org.postgresql:postgresql'
-}`
+}
+```
 
 * Указать необходимые параметры для подключения
 
-`  buildscript {
-  dependencies {
-  classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
-  }
-  }`
+``` yaml
+buildscript {
+	dependencies {
+		classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
+    }
+}
+```
 
-`flyway {
-url = 'jdbc:postgresql://localhost:5432/blog'
-user = 'root'
-password = 'root'
-}`
+``` yaml
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/blog'
+	user = 'root'
+	password = 'root'
+}
+```
 
 * Выполнить команду `flywayInfo`, чтобы убедиться в корректности работы плагина
 
@@ -257,7 +290,7 @@ Amplicode автоматически разместил этот скрипт в
 Хорошей практикой при разработке Spring Boot приложения и использованием системы версионирования баз данных является применение возможностей валидации соответствия JPA модели и схемы базы данных при помощи Hibernate. Путем использования свойства Hibernate `spring.jpa.hibernate.ddl-auto` со значением `validate` мы можем обеспечить соответствие JPA модели и схемы базы данных.
 
 Внесите следующий код в файл `application-properties`:
-```asciidoc
+```properties
 spring.jpa.hibernate.ddl-auto=validate
 ```
 Чтобы сделать это быстро, начните печатать `ddl-auto` и Amplicode предложит вам соответствующее свойство. Достаточно будет выбрать его из выпадающего списка и нажать `Enter`.
