@@ -87,7 +87,7 @@ interval: 10s
 timeout: 5s
 start_period: 10s
 retries: 5
-entrypoint: /bin/sh -c "chmod 600 /pgadmin4/pgpass; /entrypoint.sh;"`
+entrypoint: /bin/sh -c "chmod 600 /pgadmin4/pgpass; /entrypoint.sh;"
 ```
 Теперь необходимо запустить все сервисы, чтобы посмотреть на актуальное состояние БД. Для этого необходимо нажать на иконку двойной стрелочки напротив слова `services` в файле `docker-compose.yaml`
 
