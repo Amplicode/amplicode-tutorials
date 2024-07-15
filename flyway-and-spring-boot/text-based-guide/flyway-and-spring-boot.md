@@ -158,31 +158,77 @@ Amplicode Explorer позволяет добавить необходимые с
 Для этого необходимо:
 * Добавить плагин в файл `build.gradle`
 
-``` yaml
+```groovy
 plugins {
-id "org.flywaydb.flyway" version "10.15.2"
+    id "org.flywaydb.flyway" version "10.15.2"
 }
 ```
 
 * Добавить зависимость для работы с PostgreSQL
 
-``` yaml
+```groovy
 dependencies {
-runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:postgresql'
 }
 ```
 
 * Указать необходимые параметры для подключения
 
-``` yaml
+```groovy
 buildscript {
-	dependencies {
-		classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
+    dependencies {
+        classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
     }
 }
 ```
 
-``` yaml
+```groovy
+flyway {
+    url = 'jdbc:postgresql://localhost:5432/blog'
+    user = 'root'
+    password = 'root'
+}
+```
+
+В результате файл `build.gradle` будет выглядеть слебдующим образом:
+
+```groovy
+buildscript {
+	dependencies {
+		classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
+	}
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.flywaydb.flyway' version '10.10.0'
+}
+
+group = 'io.amplicode'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.flywaydb:flyway-core'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
 flyway {
 	url = 'jdbc:postgresql://localhost:5432/blog'
 	user = 'root'
@@ -279,7 +325,9 @@ flyway {
 Для этого необходимо:
 * Выбрать скрипты, относящиеся к изменению пользователя (1)
 * В верхней панели выбрать действие переноса скриптов в новый файл миграции (2):
+
   ![](images/select-scripts-user.png)
+  
 * Задать название каждому из файлов
 
 ![](images/changelog-names.png)
