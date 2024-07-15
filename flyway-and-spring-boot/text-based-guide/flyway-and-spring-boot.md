@@ -62,26 +62,26 @@ Amplicode добавит в файл docker-compose.yaml код для pgAdmin �
 
 ```yaml
 pgadmin:
-image: dpage/pgadmin4:8.9
-restart: "no"
-ports:
-- "5050:80"
-volumes:
-- pgadmin_data:/var/lib/pgadmin
-- ./docker/pgadmin/servers.json:/pgadmin4/servers.json
-- ./docker/pgadmin/pgpass:/pgadmin4/pgpass
-environment:
-PGADMIN_DEFAULT_EMAIL: admin@admin.com
-PGADMIN_DEFAULT_PASSWORD: root
-PGADMIN_CONFIG_SERVER_MODE: "False"
-PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
-healthcheck:
-test: wget --no-verbose --tries=1 --spider http://localhost:80/misc/ping || exit -1
-interval: 10s
-timeout: 5s
-start_period: 10s
-retries: 5
-entrypoint: /bin/sh -c "chmod 600 /pgadmin4/pgpass; /entrypoint.sh;"
+    image: dpage/pgadmin4:8.9
+    restart: "no"
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./docker/pgadmin/servers.json:/pgadmin4/servers.json
+      - ./docker/pgadmin/pgpass:/pgadmin4/pgpass
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:80/misc/ping || exit -1
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 5
+    entrypoint: /bin/sh -c "chmod 600 /pgadmin4/pgpass; /entrypoint.sh;"
 volumes:
   pgadmin_data:
 ```
