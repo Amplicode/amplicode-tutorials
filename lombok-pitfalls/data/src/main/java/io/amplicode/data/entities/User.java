@@ -6,6 +6,7 @@ import lombok.Data;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "users")
 public class User {
