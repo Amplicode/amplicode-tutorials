@@ -1,9 +1,11 @@
 package io.amplicode.builder_and_allargsconstructor.entities;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
 @Entity

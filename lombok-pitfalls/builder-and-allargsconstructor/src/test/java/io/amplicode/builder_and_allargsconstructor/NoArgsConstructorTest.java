@@ -13,10 +13,10 @@ class NoArgsConstructorTest {
 
     @Test
     public void builderTest() {
-//        User user = User.builder()
-//                .id(1L)
-//                .build();
-//        userRepository.save(user);
+        User user = User.builder()
+                .id(1L)
+                .build();
+        userRepository.save(user);
     }
 
 }
