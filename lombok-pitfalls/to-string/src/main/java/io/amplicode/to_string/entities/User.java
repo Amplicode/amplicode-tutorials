@@ -23,10 +23,12 @@ public class User {
     private String username;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
+    @ToString.Exclude
     private Set<Post> posts = new LinkedHashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
+    @ToString.Exclude
     private Address address;
 
 }
