@@ -31,3 +31,9 @@
 * Видео: http://www.youtube.com/watch?v=IOQ7MzXoDnE
 * Проект: [blog](extends-feature-in-docker-compose/spring-petclinic-main)
 * Инструкция для самостоятельного прохождения демо-сценария: [README.md](extends-feature-in-docker-compose/README.md)
+
+## Не используй Lombok с JPA, пока не посмотришь это видео
+
+* Видео: http://www.youtube.com/watch?v=7kdQTh4oOQM
+* Проекты: [lombok-pitfalls](lombok-pitfalls)
+* Инструкция для самостоятельного прохождения демо-сценария: [README.md](lombok-pitfalls/README.md)
