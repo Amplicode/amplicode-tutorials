@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @Getter
 @Setter
 @Entity
