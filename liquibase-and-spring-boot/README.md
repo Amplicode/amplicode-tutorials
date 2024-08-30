@@ -25,4 +25,4 @@
    ![configure-project.jpeg](img/configure-project.jpeg)
 8. Проект готов! Теперь вы можете повторить гайд следуя:
     * Видео: https://youtu.be/blAaNt_XHAs
-    * Или текстовому описанию: [//TODO]:#(добавить ссылку)
+    * Или текстовому описанию: https://habr.com/ru/companies/haulmont/articles/826188/

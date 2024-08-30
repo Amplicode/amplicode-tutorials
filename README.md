@@ -17,12 +17,14 @@
 ## Liquibase + Spring Boot | Настройка и написание миграций баз данных
 
 * Видео: http://www.youtube.com/watch?v=blAaNt_XHAs
+* Статья на Habr: https://habr.com/ru/companies/haulmont/articles/826188/
 * Проект: [blog](liquibase-and-spring-boot/blog)
 * Инструкция для самостоятельного прохождения демо-сценария: [README.md](liquibase-and-spring-boot/README.md)
 
 ## Flyway + Spring Boot | Настройка и написание миграций баз данных
 
 * Видео: http://www.youtube.com/watch?v=w-46xlGRcZk
+* Статья на Habr: https://habr.com/ru/companies/haulmont/articles/829782/
 * Проект: [blog](flyway-and-spring-boot/blog)
 * Инструкция для самостоятельного прохождения демо-сценария: [README.md](flyway-and-spring-boot/README.md)
 
@@ -35,5 +37,6 @@
 ## Не используй Lombok с JPA, пока не посмотришь это видео
 
 * Видео: http://www.youtube.com/watch?v=7kdQTh4oOQM
+* Статья на Habr: https://habr.com/ru/companies/haulmont/articles/836018/
 * Проекты: [lombok-pitfalls](lombok-pitfalls)
 * Инструкция для самостоятельного прохождения демо-сценария: [README.md](lombok-pitfalls/README.md)
