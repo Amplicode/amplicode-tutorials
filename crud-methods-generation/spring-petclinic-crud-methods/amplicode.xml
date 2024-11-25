@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodeDatabaseMigrationSettings" lastSelectedDirectory="src/test/resources" />
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="spring-petclinic.main" name="Default">
+        <packages>
+          <package value="org.springframework.samples.petclinic" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>
