@@ -2,6 +2,12 @@
 
 Репозиторий содержит исходные коды проектов, которые используются в следующих видео:
 
+## Создаём CRUD REST API в Spring Boot быстро и просто вместе с Amplicode
+
+* Видео: https://youtu.be/ManmKRvr4aY
+* Проект: [spring-petclinic-crud-methods](crud-methods-generation/spring-petclinic-crud-methods)
+* Инструкция для самостоятельного прохождения демо-сценария: [README.md](crud-methods-generation/README.md)
+
 ## Amplicode для разработки Spring Boot (Security + Web + Data + Flyway + Kafka) приложения
 
 * Видео: http://www.youtube.com/watch?v=g5kzePtZ9FQ
