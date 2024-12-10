@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ConnektScriptState">
+    <option name="scriptFileState">
+      <list>
+        <ConnektScriptState>
+          <option name="environment" value="test" />
+          <option name="fileUrl" value="file://$APPLICATION_CONFIG_DIR$/consoles/Connekt/generated-requests.connekt.kts" />
+        </ConnektScriptState>
+        <ConnektScriptState>
+          <option name="fileUrl" value="file://$APPLICATION_CONFIG_DIR$/consoles/Connekt/POST Requests/post.connekt.kts" />
+        </ConnektScriptState>
+        <ConnektScriptState>
+          <option name="fileUrl" value="file://$APPLICATION_CONFIG_DIR$/consoles/Connekt/GET Requests/get.connekt.kts" />
+        </ConnektScriptState>
+        <ConnektScriptState>
+          <option name="fileUrl" value="file://$APPLICATION_CONFIG_DIR$/consoles/Connekt/Authorization Requests/authorization.connekt.kts" />
+        </ConnektScriptState>
+        <ConnektScriptState>
+          <option name="fileUrl" value="file://$APPLICATION_CONFIG_DIR$/consoles/Connekt/Test Requests/tests.connekt.kts" />
+        </ConnektScriptState>
+      </list>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="20" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>

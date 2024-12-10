@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+apply plugin: 'java'
+
+group = 'org.springframework.samples'
+version = '3.3.1'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+ext.webjarsFontawesomeVersion = "4.7.0"
+ext.webjarsBootstrapVersion = "5.2.3"
+
+dependencies {
+    implementation (
+        'org.springframework.boot:spring-boot-starter-cache',
+        'org.springframework.boot:spring-boot-starter-data-jpa',
+        'org.springframework.boot:spring-boot-starter-thymeleaf',
+        'org.springframework.boot:spring-boot-starter-web',
+        'org.springframework.boot:spring-boot-starter-validation',
+        'javax.cache:cache-api',
+        'jakarta.xml.bind:jakarta.xml.bind-api',
+        'org.flywaydb:flyway-core',
+        'org.flywaydb:flyway-database-postgresql',
+        'org.springframework.kafka:spring-kafka',
+        'org.springframework.boot:spring-boot-docker-compose'
+    )
+
+    runtimeOnly (
+        'org.springframework.boot:spring-boot-starter-actuator',
+        "org.webjars.npm:bootstrap:${webjarsBootstrapVersion}",
+        "org.webjars.npm:font-awesome:${webjarsFontawesomeVersion}",
+        'com.github.ben-manes.caffeine:caffeine',
+        'com.h2database:h2',
+        'org.postgresql:postgresql'
+    )
+
+    developmentOnly (
+            'org.springframework.boot:spring-boot-devtools'
+    )
+
+    testImplementation (
+            'org.springframework.boot:spring-boot-starter-test',
+            'org.testcontainers:junit-jupiter',
+            'org.testcontainers:postgresql',
+            'org.springframework.boot:spring-boot-testcontainers'
+    )
+
+    compileOnly (
+            'org.mapstruct:mapstruct:1.5.3.Final',
+            'org.projectlombok:lombok:1.18.30'
+    )
+
+    annotationProcessor (
+            'org.mapstruct:mapstruct-processor:1.5.3.Final',
+            'org.projectlombok:lombok:1.18.30',
+            'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    )
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
