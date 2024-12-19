@@ -1,0 +1,41 @@
+services:
+  spring-petclinic:
+    image: spring-petclinic:latest
+    build:
+      context: .
+      args:
+        DOCKER_BUILDKIT: 1
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - prod.env
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+    depends_on:
+      - postgres
+  postgres:
+    extends:
+      service: postgres
+      file: services.yaml
+    volumes:
+      - ./src/main/resources/db/postgres:/docker-entrypoint-initdb.d:ro
+    env_file:
+      - prod.env
+  kafka:
+    extends:
+      service: kafka
+      file: services.yaml
+    ports:
+      - "9095:9095"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29095,PLAINTEXT_HOST://localhost:9095
+      KAFKA_LISTENERS: PLAINTEXT://kafka:29095,PLAINTEXT_HOST://0.0.0.0:9095,CONTROLLER://kafka:9093
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+volumes:
+  postgres_data:
+  kafka_data:
