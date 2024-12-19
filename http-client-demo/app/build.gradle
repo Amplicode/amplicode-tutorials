@@ -29,7 +29,8 @@ dependencies {
         'org.flywaydb:flyway-core',
         'org.flywaydb:flyway-database-postgresql',
         'org.springframework.kafka:spring-kafka',
-        'org.springframework.boot:spring-boot-docker-compose'
+        'org.springframework.boot:spring-boot-docker-compose',
+        'org.springframework.boot:spring-boot-starter-security'
     )
 
     runtimeOnly (
