@@ -2,6 +2,12 @@
 
 Репозиторий содержит исходные коды проектов, которые используются в следующих видео:
 
+## Новый HTTP-клиент от Amplicode на Kotlin Script для Spring-приложений и не только
+
+* Видео: https://youtu.be/P-aN3GuWYvo
+* Проект: [app](http-client-demo/app)
+* Инструкция для самостоятельного прохождения демо-сценария: [README.md](http-client-demo/README.md)
+
 ## Создаём CRUD REST API в Spring Boot быстро и просто вместе с Amplicode
 
 * Видео: https://youtu.be/ManmKRvr4aY
