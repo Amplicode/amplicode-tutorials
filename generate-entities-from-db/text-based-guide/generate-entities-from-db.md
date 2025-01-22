@@ -99,13 +99,7 @@ ALTER TABLE posts
 
 ![click-generate.png](images/click-generate.png)
 
-Теперь откройте сгенерированное приложение в IntelliJ IDEA. В момент первого открытия приложения Amplicode необходимо активировать.
-
-![enable-amplicode.png](images/enable-amplicode.png)
-
-После успешной активации все возможности Amplicode станут доступны, и вы сможете увидеть панель Amplicode Explorer в левой нижней части экрана.
-
-![amplicode-explorer-panel.png](images/amplicode-explorer-panel.png)
+Теперь откройте сгенерированное приложение в IntelliJ IDEA.
 
 ## Настройка подключения к БД
 
@@ -154,9 +148,7 @@ spring.datasource.password=root
 spring.datasource.driver-class-name=org.postgresql.Driver
 ```
 
-Также будет создано подключение к нашей базе данных. 
-
-![connection-has-been-created.png](images/connection-has-been-created.png)
+Также будет создано подключение к нашей базе данных.
 
 Теперь можно приступать к следующему шагу - разработке JPA модели. 
 
