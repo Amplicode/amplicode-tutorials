@@ -83,52 +83,40 @@ ALTER TABLE posts
 
 На странице генерации приложения:
 
-* Установите название группы и артефакты 
+* Установите название группы и артефакты (1)
 
-![group-and-artefact.png](images/group-and-artefact.png)
-* Нажмите на ADD DEPENDENCIES
+* Нажмите на ADD DEPENDENCIES (2)
 
-![add-dependencies.png](images/add-dependencies.png)
-
-* Добавьте зависимости для Spring Data JPA и PostgreSQL 
-
-![how-to-add-dependency.png](images/how-to-add-dependency.png)
+* Добавьте зависимости для Spring Data JPA и PostgreSQL (3)
 
 * Все остальные настройки оставьте по умолчанию
-* Нажмите **GENERATE**
 
-![click-generate.png](images/click-generate.png)
+* Нажмите **GENERATE** (4)
+
+![generate.png](images/generate.png)
 
 Теперь откройте сгенерированное приложение в IntelliJ IDEA.
 
 ## Настройка подключения к БД
 
-Теперь надо настроить источник данных для корректной работы со Spring Data JPA. Amplicode знает, что мы этого еще не сделали, и явно сигнализирует нам об этом. 
-
-![amplicode-signalling.png](images/amplicode-signalling.png)
+Теперь надо настроить источник данных для корректной работы со Spring Data JPA. 
 
 С Amplicode настроить источник данных довольно легко: 
 
-* Нажмите правой кнопкой мыши по узлу **Spring Data JPA**  
-* Выберите опцию **Create JPA Datasource** 
+* Нажмите правой кнопкой мыши по узлу **Data Sources**  
+* Выберите опцию **New** -> **Default Data Source** 
 
 ![create-jpa-datasource-option.png](images/create-jpa-datasource-option.png)
 
-* В открывшемся окне выберите тип базы данных (PostgreSQL) 
+* В открывшемся окне выберите тип базы данных (PostgreSQL)  (1)
 
-![select-database-type.png](images/select-database-type.png)
+* Укажите необходимые параметры для подключения к источнику данных (2)
 
-* Укажите необходимые параметры для подключения к источнику данных 
+* Благодаря действию **Test Connection** можно убедиться в корректности указанных параметров для источника данных (3)
 
-![connection-parameters.png](images/connection-parameters.png)
+* Кроме того, имеет смысл сразу же создать подключение к базе данных: для этого отметим чекбокс **Create DB Connection**. (4)
 
-* Благодаря действию **test connection** можно убедиться в корректности указанных параметров для источника данных. 
-
-![test-connection-action.png](images/test-connection-action.png)
-
-* Кроме того, имеет смысл сразу же создать подключение к базе данных: для этого отметим чекбокс **Create DB Connection**. 
-
-![create-db-connection-checkbox.png](images/create-db-connection-checkbox.png)
+![create-db-connection.png](images/create-db-connection.png)
 
 > Подключение к базе данных необходимо для дальнейшей корректной работы таких возможностей Amplicode как создание сущности на основе таблиц в базе данных, а также генерация скриптов миграции. 
 
@@ -160,7 +148,7 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 
 ![root-package-name.png](images/root-package-name.png)
 
-* В появившемся всплывающем меню выберите действие **JPA Entities from DB** 
+* В появившемся всплывающем меню выберите действие **New** -> **JPA Entities from DB** 
 
 ![jpa-entities-from-db-action.png](images/jpa-entities-from-db-action.png)
 
