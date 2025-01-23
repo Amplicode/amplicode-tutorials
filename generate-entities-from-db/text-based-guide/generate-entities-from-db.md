@@ -183,13 +183,7 @@ Amplicode прекрасно понимает, что некоторым тип�
     private Set<Post> posts = new LinkedHashSet<>();
 ```
 
-Стоит отметить, что несмотря на то, что наши таблицы называются во множественном числе (`users`, `posts`), что является довольно распространенным подходом к именованию таблиц на уровне базы данных, на уровне JPA модели принято придерживаться именования в единственном числе. 
-
-```java
-public class User {
-}
-}
-```
+Стоит отметить, что несмотря на то, что наши таблицы называются во множественном числе (`users`, `posts`), что является довольно распространенным подходом к именованию таблиц на уровне базы данных, на уровне JPA модели принято придерживаться именования в единственном числе (`User`).
 
 Amplicode автоматически установил названия для сущностей в единственном числе. 
 
@@ -207,7 +201,7 @@ Amplicode автоматически установил названия для 
 
 ![migrate-indexes-and-constraints.png](images/migrate-indexes-and-constraints.png)
 
-Последним шагом определите отдельный пакет для сущностей, введя его название в поле **Entity package**.  
+Последним шагом определите отдельный пакет для сущностей, введя его название в поле **Package**.  
 
 ![package-for-entities.png](images/package-for-entities.png)
 
@@ -260,46 +254,8 @@ public class BaseEntity {
 
     @Column(name = "last_modified_date")
     private Instant lastModifiedDate;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Instant getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public Instant getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
+    
+    //Геттеры и сеттеры опущены для краткости
 }
 ```
 
@@ -320,29 +276,7 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "author")
     private Set<Post> posts = new LinkedHashSet<>();
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Set<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
-    }
+    //Геттеры и сеттеры опущены для краткости
 
 }
 ```
@@ -431,7 +365,11 @@ ADD CONSTRAINT fk_compos_on_posts FOREIGN KEY (posts_id) REFERENCES posts (id);
 
 ![to-posts-checkbox-checked.png](images/to-posts-checkbox-checked.png)
 
-Нажмите **OK**. Новая сущность и связь "многие ко многим" будут реализованы. Кроме того, новые атрибуты будут добавлены в уже существующую сущность без изменения ранее написанного кода.
+Нажмите **OK**. Новая сущность и связь "многие ко многим" будут реализованы. 
+
+![many-to-many-implemented.png](images/many-to-many-implemented.png)
+
+Кроме того, новые атрибуты будут добавлены в уже существующую сущность без изменения ранее написанного кода.
 
 ```java
     @Column(name = "email")
