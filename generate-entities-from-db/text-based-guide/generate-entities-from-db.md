@@ -369,31 +369,9 @@ ADD CONSTRAINT fk_compos_on_posts FOREIGN KEY (posts_id) REFERENCES posts (id);
 
 ![many-to-many-implemented.png](images/many-to-many-implemented.png)
 
-Кроме того, новые атрибуты будут добавлены в уже существующую сущность без изменения ранее написанного кода.
+Кроме того, новые атрибуты будут добавлены в уже существующую сущность `User` без изменения ранее написанного кода.
 
-```java
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "last_activity")
-    private Instant lastActivity;
-
-    public Instant getLastActivity() {
-        return lastActivity;
-    }
-
-    public void setLastActivity(Instant lastActivity) {
-        this.lastActivity = lastActivity;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-```
+![new-attributes-old-entity.png](images/new-attributes-old-entity.png)
 
 ## Создание JPA сущности для DB View
 
