@@ -1,0 +1,27 @@
+services:
+  postgres-test:
+    extends:
+      service: postgres
+      file: services.yaml
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+  kafka-test:
+    extends:
+      service: kafka
+      file: services.yaml
+    ports:
+      - "9094:9094"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-test:29094,PLAINTEXT_HOST://localhost:9094
+      KAFKA_LISTENERS: PLAINTEXT://kafka-test:29094,PLAINTEXT_HOST://0.0.0.0:9094,CONTROLLER://kafka-test:9093
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-test:9093
+    healthcheck:
+      test: kafka-topics --bootstrap-server localhost:9094 --list
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 5

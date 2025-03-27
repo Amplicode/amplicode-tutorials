@@ -28,7 +28,8 @@ dependencies {
         'jakarta.xml.bind:jakarta.xml.bind-api',
         'org.flywaydb:flyway-core',
         'org.flywaydb:flyway-database-postgresql',
-        'org.springframework.kafka:spring-kafka'
+        'org.springframework.kafka:spring-kafka',
+        'org.springframework.boot:spring-boot-docker-compose'
     )
 
     runtimeOnly (

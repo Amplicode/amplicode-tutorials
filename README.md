@@ -2,6 +2,12 @@
 
 Репозиторий содержит исходные коды проектов, которые используются в следующих видео:
 
+## Интеграционное тестирование | Spring Boot + Yandex SourceCraft + Amplicode + Docker Compose Starter
+
+* Видео: https://youtu.be/suqpDTeHqSY
+* Проект: [app](integration-testing-docker-compose/app)
+* Инструкция для самостоятельного прохождения демо-сценария: [README.md](integration-testing-docker-compose/app)
+
 ## Новый HTTP-клиент от Amplicode на Kotlin Script для Spring-приложений и не только
 
 * Видео: https://youtu.be/P-aN3GuWYvo
