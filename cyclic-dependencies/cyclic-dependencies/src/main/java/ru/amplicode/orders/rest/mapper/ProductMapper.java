@@ -5,8 +5,9 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import ru.amplicode.orders.domain.Product;
-import ru.amplicode.orders.rest.dto.ProductDto;
 import ru.amplicode.orders.rest.dto.CreateProductDto;
+import ru.amplicode.orders.rest.dto.ProductDto;
+import ru.amplicode.orders.rest.dto.ProductWithPictureDto;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
@@ -19,5 +20,10 @@ public interface ProductMapper {
     CreateProductDto toCreateProductDto(Product product);
 
     Product updateWithNull(ProductDto productDto,
+                           @MappingTarget Product product);
+
+    ProductWithPictureDto toProductWithPictureDto(Product product);
+
+    Product updateWithNull(ProductWithPictureDto productWithPictureDto,
                            @MappingTarget Product product);
 }

@@ -33,10 +33,6 @@ public class YandexS3Storage implements FileUploader {
             fileName = fileName + file.getOriginalFilename();
         }
 
-        if (products.getOne(productId).getPicture() != null) {
-            throw new IllegalStateException("Upload forbidden for this product!");
-        }
-
         try {
             amazonS3.putObject(
                 new PutObjectRequest(
