@@ -2,6 +2,12 @@
 
 Репозиторий содержит исходные коды проектов, которые используются в следующих видео:
 
+## Циклические зависимости в Spring: разбираемся на практике
+
+* Видео: https://youtu.be/g7mlFwTEbDU
+* Проект: [cyclic-dependencies](cyclic-dependencies/cyclic-dependencies)
+* Инструкция для самостоятельного прохождения демо-сценария: [README.md](cyclic-dependencies/README.md)
+
 ## Интеграционное тестирование | Spring Boot + Yandex SourceCraft + Amplicode + Docker Compose Starter
 
 * Видео: https://youtu.be/suqpDTeHqSY
