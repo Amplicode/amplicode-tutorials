@@ -1,0 +1,7 @@
+ssh_pwauth: no
+users:
+    - name: admin
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      shell: /bin/bash
+      ssh_authorized_keys:
+          - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCog449V0MbnYeXtVbUJV7J3GhbGjRffs19+Qo9FyoLTJzwvttagRIFPpQ76Z+sajDrEtVvjHL5r7eEPWYwocvvtKUjH1+vikMOyHEJPm10GNc9mdDy0XOJIDVbI+w3rKr3w/mv21iGmaJsTU6pwFe/s6PqF4fv0U+BoJQmTYt83/9+/Pxuqj/q/MXhZa7slctueSYxOBb72TOd/U2DjQ7kPfAWMPM4/T9YrjMWkpdsuIkEFaces+yZqf2FDdnkaWtQiVFpGkecJrFW8HBXANo9rGK4Ht/xqkn1sTWqLEGzoe/jVqXzSs6bOvChXeC/QQXk+E++zV8Xhr5i06UweDpQGyi3ClM6B8vCw/a2+vpeEAbB8iCEG36U4Skr4bCXc42tFduUvfD80+pZ0oaJqGhHWA3hX8Vx4KfX6Dv3i4R1A6obH19I0tHD1AfyrtxlGaVMDm1J7R4DxnTxuvUqh7/Nu47P79WYcNKKYx7SFc6xjakrldm36FybbF874+Y90m0= alexander@Aleksandrs-MacBook-Pro.local"

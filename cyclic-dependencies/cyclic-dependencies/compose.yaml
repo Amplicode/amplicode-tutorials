@@ -1,0 +1,68 @@
+services:
+    postgres:
+        image: 'postgres:17.0'
+        environment:
+            - 'POSTGRES_DB=orders'
+            - 'POSTGRES_PASSWORD=root'
+            - 'POSTGRES_USER=root'
+        ports:
+            - '5432:5432'
+    kafka:
+        image: confluentinc/cp-kafka:7.9.0
+        restart: "no"
+        ports:
+            - "29092:29092"
+            - "9092:9092"
+        volumes:
+            - kafka_data:/var/lib/kafka/data
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+            KAFKA_NODE_ID: 1
+            CLUSTER_ID: FvT61JwQRvmFVu-opRtigg
+            KAFKA_PROCESS_ROLES: controller,broker
+            KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+            KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+            KAFKA_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://0.0.0.0:9092,CONTROLLER://kafka:9093
+        healthcheck:
+            test: kafka-topics --bootstrap-server localhost:9092 --list
+            interval: 10s
+            timeout: 5s
+            start_period: 30s
+            retries: 5
+        labels:
+            amplicode.image: confluent/kafka
+    kafkaui:
+        image: provectuslabs/kafka-ui:v0.7.2
+        restart: "no"
+        ports:
+            - "8989:8080"
+        environment:
+            DYNAMIC_CONFIG_ENABLED: "true"
+            KAFKA_CLUSTERS_0_NAME: FvT61JwQRvmFVu-opRtigg
+            KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+        healthcheck:
+            test: wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit -1
+            interval: 10s
+            timeout: 5s
+            start_period: 60s
+            retries: 5
+    minio:
+        image: minio/minio:latest
+        container_name: minio
+        environment:
+            MINIO_ROOT_USER: minioadmin
+            MINIO_ROOT_PASSWORD: minioadmin
+        volumes:
+            - minio_data:/data
+            - minio_config:/root/.minio
+        ports:
+            - "9000:9000"    # MinIO Web UI
+            - "9001:9001"    # MinIO Console
+        command: server /data --console-address ":9001"
+volumes:
+    kafka_data:
+    minio_data:
+    minio_config:

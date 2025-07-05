@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1745555616122-1" author="georgii (generated)">
+        <createTable tableName="order_">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="order__pkey"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITH TIME ZONE"/>
+            <column name="order_status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1745555616122-2" author="georgii (generated)">
+        <createTable tableName="inventory">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="inventory_pkey"/>
+            </column>
+            <column name="available" type="BIGINT"/>
+            <column name="reserved" type="BIGINT"/>
+            <column name="city_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1745555616122-3" author="georgii (generated)">
+        <createTable tableName="city">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="city_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1745555616122-4" author="georgii (generated)">
+        <addUniqueConstraint columnNames="product_id, city_id" constraintName="idx_product_city_unq"
+                             tableName="inventory"/>
+    </changeSet>
+    <changeSet id="1745555616122-5" author="georgii (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="ukqsstlki7ni5ovaariyy9u8y79" tableName="city"/>
+    </changeSet>
+    <changeSet id="1745555616122-6" author="georgii (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="city_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1745555616122-7" author="georgii (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="customer_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1745555616122-8" author="georgii (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="inventory_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1745555616122-9" author="georgii (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="order_line_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1745555616122-10" author="georgii (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="order_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1745555616122-11" author="georgii (generated)">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807"
+                        minValue="1" sequenceName="product_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1745555616122-12" author="georgii (generated)">
+        <createTable tableName="customer">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="customer_pkey"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1745555616122-13" author="georgii (generated)">
+        <createTable tableName="order_line">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="order_line_pkey"/>
+            </column>
+            <column name="amount" type="BIGINT"/>
+            <column name="order_id" type="BIGINT"/>
+            <column name="product_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1745555616122-14" author="georgii (generated)">
+        <createTable tableName="product">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="product_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="price" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1745555616122-15" author="georgii (generated)">
+        <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="order_"
+                                 constraintName="fk6t5rvnku923onh4vox02i78da" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="city"/>
+    </changeSet>
+    <changeSet id="1745555616122-16" author="georgii (generated)">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="order_"
+                                 constraintName="fkbcqs50rf794der0iy0h6c0mgd" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="customer"/>
+    </changeSet>
+    <changeSet id="1745555616122-17" author="georgii (generated)">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="inventory"
+                                 constraintName="fkp7gj4l80fx8v0uap3b2crjwp5" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="product"/>
+    </changeSet>
+    <changeSet id="1745555616122-18" author="georgii (generated)">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="order_line"
+                                 constraintName="fkpf904tci8garypkvm32cqupye" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="product"/>
+    </changeSet>
+    <changeSet id="1745555616122-19" author="georgii (generated)">
+        <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="inventory"
+                                 constraintName="fkplxockmdjuvr59p4psylnexlo" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="city"/>
+    </changeSet>
+    <changeSet id="1745555616122-20" author="georgii (generated)">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="order_line"
+                                 constraintName="fkscp0q14fm4hvru97lx2xjby0w" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="order_"/>
+    </changeSet>
+
+</databaseChangeLog>
