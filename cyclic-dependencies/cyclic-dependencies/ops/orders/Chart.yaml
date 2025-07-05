@@ -1,0 +1,20 @@
+apiVersion: v2
+name: orders
+description: A Helm chart for deploying orders to Kubernetes
+
+type: application
+
+version: 0.1.0
+
+dependencies:
+  - name: postgresql
+    version: 16.5.0
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: postgresql.enabled
+
+  - name: minio
+    version: 15.0.7
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: minio.enabled
+
+
