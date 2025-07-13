@@ -19,7 +19,6 @@ public class YandexS3Storage implements FileUploader {
 
     private final AmazonS3 amazonS3;
     private final FileUrlBuilder fileUrlBuilder;
-    private final ProductService products;
     @Value("${storage.bucket}")
     private String bucket;
 
